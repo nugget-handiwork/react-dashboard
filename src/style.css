@@ -1,0 +1,84 @@
+/* The embedding app owns the theme, not the operating system: it sets
+   color-scheme on the root, and every token below resolves through
+   light-dark(). Standing alone, the pair leaves the choice to the OS.
+   Never add a prefers-color-scheme rule — it would ignore the app. */
+:root {
+  color-scheme: light dark;
+
+  --surface: light-dark(#ffffff, #111111);
+  --ink: light-dark(#111111, #ffffff);
+  --muted: light-dark(#717171, #b8b8b8);
+  --grid: light-dark(#eaeaea, #2f2f2f);
+  --axis: light-dark(#b8b8b8, #474747);
+  --halo: light-dark(#ffffff, #111111);
+  --tooltip-surface: #333333;
+  --tooltip-ink: #ffffff;
+
+  --categorical-1: #fc6b22;
+  --categorical-2: light-dark(#212431, #ebebeb);
+  --categorical-3: #283dff;
+  --categorical-4: light-dark(#e6d429, #ede557);
+  --categorical-5: #43a178;
+  --categorical-6: #b3d5ea;
+
+  --sequential-1: light-dark(#fc6b22, #ff893f);
+  --sequential-2: light-dark(#ff893f, #fc6b22);
+  --sequential-3: light-dark(#ffa962, #f54500);
+  --sequential-4: light-dark(#ffc782, #c54200);
+  --sequential-5: light-dark(#ffe1b9, #a32000);
+  --sequential-6: light-dark(#fff4e3, #720000);
+
+  --secondary-1: light-dark(#283dff, #4154ff);
+  --secondary-2: light-dark(#4154ff, #283dff);
+  --secondary-3: light-dark(#6b8eff, #2425e6);
+  --secondary-4: light-dark(#9cb6ff, #2124ab);
+  --secondary-5: light-dark(#c2d4ff, #181e98);
+  --secondary-6: light-dark(#dde8ff, #161750);
+
+  --diverging-1: #fc6b22;
+  --diverging-2: light-dark(#f6cba4, #6e421c);
+  --diverging-3: light-dark(#fae0c9, #3c2816);
+  --diverging-4: light-dark(#d1d6fa, #171c3a);
+  --diverging-5: light-dark(#a8b2f6, #1f2b6e);
+  --diverging-6: #283dff;
+
+  --hashed-1: #fc6b22;
+  --hashed-2: light-dark(#f1b18e, #813f1a);
+  --hashed-3: light-dark(#fed7bb, #63391a);
+}
+
+/* The app owns the ground the artifact sits on: no page background and no
+   outer margin, so the dashboard draws to the edges of the frame. */
+body {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.panel {
+  min-height: 120px;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.panel-loading,
+.panel-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.panel-error {
+  color: #b3261e;
+}
